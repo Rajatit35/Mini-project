@@ -1,0 +1,275 @@
+!DOCTYPE html>
+<html>
+	<head>
+		<script src="js/index.js"></script>
+		<script src="js/d3.min.js"></script>
+	</head>
+</html>
+<?php
+	if(isset($_POST['topsubmit']))
+	{
+		$yeartolook=$_POST['yeartolook'];
+		$tophowmany=$_POST['findtop'];
+		$typed=0;
+		$gender=$_POST['gender'];
+		if($gender=="both")
+		{
+				
+				$filein=fopen("female_cy".$yeartolook."_top.csv","r");
+				$fpos=ftell($filein);
+				fgets($filein);				
+				echo "<h1>Names for Girls</h1>";
+				$isfirst=1;
+				$svgnumber=1;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					if($isfirst%10==1)
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],1,$svgnumber)</script>";		
+					}
+					else
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],0,$svgnumber)</script>";		
+					}
+					$isfirst++;
+					if($isfirst==11)
+					{
+						$isfirst=1;
+						$svgnumber++;
+					}					
+					$typed++;
+					
+				}
+
+				echo "<h4>Here is a list</h4>";
+				echo "<ol>";
+				fseek($filein,$fpos);
+				fgets($filein);
+				$typed=0;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					echo "<li>$linearray[0]<ul><li>Childs named:$linearray[1]</li></ul></li>";
+					$typed++;
+				}
+				echo "</ol>";
+				fclose($filein);
+				$filein=fopen("male_cy".$yeartolook."_top.csv","r");
+				$fpos=ftell($filein);
+				fgets($filein);		
+				$typed=0;		
+				echo "<h1>Names for Boys</h1>";
+				$isfirst=1;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					if($isfirst%10==1)
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],1,$svgnumber)</script>";		
+					}
+					else
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],0,$svgnumber)</script>";		
+					}
+					$isfirst++;
+					if($isfirst==11)
+					{
+						$isfirst=1;
+						$svgnumber++;
+					}					
+					$typed++;
+					
+				}
+
+				echo "<h4>Here is a list</h4>";
+				echo "<ol>";
+				fseek($filein,$fpos);
+				fgets($filein);
+				$typed=0;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					echo "<li>$linearray[0]<ul><li>Childs named:$linearray[1]</li></ul></li>";
+					$typed++;
+				}
+				echo "</ol>";
+				fclose($filein);		
+
+		}
+		if($gender=="girl")
+		{
+				$filein=fopen("female_cy".$yeartolook."_top.csv","r");
+				$fpos=ftell($filein);
+				fgets($filein);				
+				echo "<h1>Names for Girls</h1>";
+				$isfirst=1;
+				$svgnumber=1;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					if($isfirst%10==1)
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],1,$svgnumber)</script>";		
+					}
+					else
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],0,$svgnumber)</script>";		
+					}
+					$isfirst++;
+					if($isfirst==11)
+					{
+						$isfirst=1;
+						$svgnumber++;
+					}					
+					$typed++;
+					
+				}
+
+				echo "<h4>Here is a list</h4>";
+				echo "<ol>";
+				fseek($filein,$fpos);
+				fgets($filein);
+				$typed=0;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					echo "<li>$linearray[0]<ul><li>Childs named:$linearray[1]</li></ul></li>";
+					$typed++;
+				}
+				echo "</ol>";
+				fclose($filein);		
+
+	}
+	if($gender=="boy")
+	{
+				$filein=fopen("male_cy".$yeartolook."_top.csv","r");
+				$fpos=ftell($filein);
+				fgets($filein);				
+				echo "<h1>Names for Boys</h1>";
+				$isfirst=1;
+				$svgnumber=1;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					if($isfirst%10==1)
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],1,$svgnumber)</script>";		
+					}
+					else
+					{
+						echo "<script>drawtop($linearray[0],$linearray[1],$linearray[2],0,$svgnumber)</script>";		
+					}
+					$isfirst++;
+					if($isfirst==11)
+					{
+						$isfirst=1;
+						$svgnumber++;
+					}					
+					$typed++;
+					
+				}
+
+				echo "<h4>Here is a list</h4>";
+				echo "<ol>";
+				fseek($filein,$fpos);
+				fgets($filein);
+				$typed=0;
+				while(!feof($filein)&&$typed!=$tophowmany)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					echo "<li>$linearray[0]<ul><li>Childs named:$linearray[1]</li></ul></li>";
+					$typed++;
+				}
+				echo "</ol>";
+				fclose($filein);		
+
+	}
+}
+	if(isset($_POST['popularitysubmit']))
+	{
+		$yeartostart=$_POST['popularsyear'];
+		$byear=$yeartostart;
+		$nametolook=$_POST['kiddoname'];
+		$nametolook=strtoupper($nametolook);
+		$nametolook='"'.$nametolook.'"';
+		echo $nametolook;
+		$gender=$_POST['gender'];
+		$svgnumber=1;
+		$iscreated=0;
+		if($gender=="both")
+		{
+			
+			while($yeartostart<2014)
+			{
+				$filein=fopen("female_cy".$yeartostart."_top.csv","r");
+				$fpos=ftell($filein);
+				fgets($filein);
+				$flag=0;
+				while(!feof($filein))
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					$linearray[2]=substr($linearray[2],2);
+					$linearray[2]=substr_replace($linearray[2],"",-3);
+					//echo $linearray[2];
+					//echo "<br>";
+					
+					if(strcmp($linearray[0],$nametolook)==0)
+					{
+						$flag=1;
+						if($iscreated==0)
+						{
+							echo "<script>drawtop($linearray[0],$linearray[2],$linearray[1],1,$svgnumber)</script>";
+							$iscreated=1;				
+						}
+						else
+						{
+							echo "<script>drawtop($linearray[0],$linearray[2],$linearray[1],0,$svgnumber)</script>";		
+						}
+						echo $yeartostart;
+					}
+				}
+				$yeartostart++;	
+			}
+			$yeartostart=$byear;
+			$svgnumber++;
+			$iscreated=0;
+			/*while($yeartostart<2014)
+			{
+				$filein=fopen("male_cy".$yeartostart."_top.csv","r");
+				$fpos=ftell($filein);
+				fgets($filein);
+				$flag=0;
+				while(!feof($filein)&&$flag==0)
+				{
+					$lineread=fgets($filein);
+					$linearray=explode(",",$lineread);
+					if($linearray==$nametolook)
+					{
+						$flag=1;
+						if($yeartostart==$byear)
+						{
+							echo "<script>drawtop($linearray[0],$linearray[2],$linearray[1],1,$svgnumber)</script>";				
+						}
+						else
+						{
+							echo "<script>drawtop($linearray[0],$linearray[2],$linearray[1],0,$svgnumber)</script>";		
+						}
+					}
+				}
+				$yeartostart++;	
+			}*/
+
+		}
+	}
+?>
+
